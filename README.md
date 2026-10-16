@@ -4,6 +4,14 @@ Remote support client used by QuickSpace technicians to assist their customers. 
 
 *Aplicación de soporte remoto de QuickSpace para Windows. El cliente la abre, dicta un código al técnico y acepta cada conexión de forma explícita.*
 
+## Download
+
+Latest version: **[QuickSpace-Soporte.exe](https://github.com/quickspace-lat/quickspace-soporte/releases/latest/download/QuickSpace-Soporte.exe)** (Windows 10/11, portable, no installation). All releases: [Releases](https://github.com/quickspace-lat/quickspace-soporte/releases).
+
+This program uses free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+
+*Descarga la última versión desde el enlace de arriba. No requiere instalación.*
+
 ## How it works
 
 - Shows a 9-digit session code obtained from the QuickSpace signaling server (`config.json`).
