@@ -1,0 +1,53 @@
+{
+  "name": "quickremote-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Soporte remoto de QuickSpace",
+  "author": "QuickSpace",
+  "license": "AGPL-3.0-only",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable",
+    "dist:store": "set \"ELECTRON_BUILDER_WINDOWS_KITS_PATH=%CD%/build-tools/winsdk-x64\" && electron-builder --win appx"
+  },
+  "build": {
+    "appId": "com.quickspace.soporte",
+    "productName": "QuickSpace Soporte",
+    "files": [
+      "main.js",
+      "preload.js",
+      "input-worker.js",
+      "keymap.js",
+      "config.json",
+      "renderer/**",
+      "!node_modules/clipboardy/fallbacks/**"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "renderer/icon.png"
+    },
+    "portable": {
+      "artifactName": "QuickSpace-Soporte.exe"
+    },
+    "appx": {
+      "applicationId": "QuickSpaceSoporte",
+      "identityName": "PENDIENTE.QuickSpaceSoporte",
+      "publisher": "CN=00000000-0000-0000-0000-000000000000",
+      "publisherDisplayName": "QuickSpace",
+      "displayName": "QuickSpace Soporte",
+      "backgroundColor": "#14243C",
+      "languages": [
+        "es-ES"
+      ],
+      "artifactName": "QuickSpace-Soporte.appx"
+    }
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6"
+  },
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  }
+}

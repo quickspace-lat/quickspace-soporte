@@ -1,0 +1,19 @@
+html, body { height: 100%; margin: 0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #000;
+  color: #a9b8d4;
+  font: 18px/1.5 system-ui, "Segoe UI", sans-serif;
+  text-align: center;
+  user-select: none;
+}
+
+img { width: 320px; margin-bottom: 24px; }
+h1 { margin: 0 0 6px; font-size: 28px; font-weight: 600; color: #fff; }
+p { margin: 0; max-width: 620px; }
+strong { color: #6ad8d8; }

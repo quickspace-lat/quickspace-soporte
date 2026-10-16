@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src ws: wss:; style-src 'self'">
+  <title>QuickSpace Soporte</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <img class="logo" src="logo.svg" alt="QuickSpace">
+  <h1>Soporte remoto</h1>
+
+  <section id="view-idle">
+    <p class="muted">Dicta este código a tu técnico de soporte:</p>
+    <div id="code">— — —</div>
+    <p id="status" class="muted" role="status">Conectando con el servidor…</p>
+  </section>
+
+  <section id="view-request" hidden>
+    <p><strong id="req-name"></strong> quiere ver y controlar este equipo.</p>
+    <p class="muted">Acepta solo si tú pediste la asistencia.</p>
+    <div class="row">
+      <button type="button" id="reject-btn" class="secondary">Rechazar</button>
+      <button type="button" id="accept-btn">Permitir</button>
+    </div>
+  </section>
+
+  <section id="view-session" hidden>
+    <div class="info">
+      <div class="live" id="session-title">● Sesión activa</div>
+      <p id="session-text"></p>
+    </div>
+    <button type="button" id="privacy-no-btn" class="secondary" hidden>No</button>
+    <button type="button" id="privacy-yes-btn" hidden>Permitir</button>
+    <button type="button" id="end-btn" class="danger">Finalizar</button>
+  </section>
+
+  <footer class="muted">Cierra esta ventana para impedir cualquier acceso.</footer>
+  <script src="renderer.js"></script>
+</body>
+</html>

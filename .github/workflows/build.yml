@@ -1,0 +1,88 @@
+name: Build and sign
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    env:
+      # La firma solo se intenta cuando SignPath está configurado en el repositorio
+      SIGNPATH_ENABLED: ${{ vars.SIGNPATH_ORGANIZATION_ID != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # 1. Aplicación sin empaquetar: se firma primero el ejecutable interno
+      - name: Build unpacked app
+        run: npx electron-builder --win --dir --publish never
+
+      - name: Upload unpacked app
+        id: unpacked
+        uses: actions/upload-artifact@v4
+        with:
+          name: unpacked
+          path: dist/win-unpacked/
+
+      - name: Sign app
+        if: env.SIGNPATH_ENABLED == 'true'
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+          artifact-configuration-slug: app
+          github-artifact-id: ${{ steps.unpacked.outputs.artifact-id }}
+          wait-for-completion: true
+          wait-for-completion-timeout-in-seconds: 3600
+          output-artifact-directory: dist/win-unpacked
+
+      # 2. Ejecutable portable construido con la aplicación ya firmada, y firmado a su vez
+      - name: Build portable exe
+        run: npx electron-builder --win portable --prepackaged dist/win-unpacked --publish never
+
+      - name: Upload portable exe
+        id: portable
+        uses: actions/upload-artifact@v4
+        with:
+          name: portable
+          path: dist/QuickSpace-Soporte.exe
+
+      - name: Sign portable exe
+        if: env.SIGNPATH_ENABLED == 'true'
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+          artifact-configuration-slug: portable
+          github-artifact-id: ${{ steps.portable.outputs.artifact-id }}
+          wait-for-completion: true
+          wait-for-completion-timeout-in-seconds: 3600
+          output-artifact-directory: signed
+
+      - name: Collect release file
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force release | Out-Null
+          $src = if (Test-Path signed/QuickSpace-Soporte.exe) { 'signed/QuickSpace-Soporte.exe' } else { 'dist/QuickSpace-Soporte.exe' }
+          Copy-Item $src release/QuickSpace-Soporte.exe
+
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/QuickSpace-Soporte.exe
