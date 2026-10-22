@@ -2,7 +2,7 @@
 <!-- Configuración de artefacto "app" en SignPath: firma el ejecutable de la aplicación sin empaquetar -->
 <artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
   <zip-file>
-    <pe-file path="QuickSpace Soporte.exe">
+    <pe-file path="Quick Space Soporte.exe">
       <authenticode-sign />
     </pe-file>
   </zip-file>

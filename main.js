@@ -66,7 +66,7 @@ function createWindow() {
     fullscreenable: false,
     autoHideMenuBar: true,
     backgroundColor: '#14243c',
-    title: 'QuickSpace Soporte',
+    title: 'Quick Space Soporte',
     icon: path.join(__dirname, 'renderer', 'icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),

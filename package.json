@@ -2,8 +2,8 @@
   "name": "quickremote-agent",
   "version": "1.0.0",
   "private": true,
-  "description": "Soporte remoto de QuickSpace",
-  "author": "QuickSpace",
+  "description": "Soporte remoto de Quick Space",
+  "author": "Quick Space",
   "license": "AGPL-3.0-only",
   "main": "main.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "build": {
     "appId": "com.quickspace.soporte",
-    "productName": "QuickSpace Soporte",
+    "productName": "Quick Space Soporte",
     "files": [
       "main.js",
       "preload.js",
@@ -32,15 +32,17 @@
     },
     "appx": {
       "applicationId": "QuickSpaceSoporte",
-      "identityName": "PENDIENTE.QuickSpaceSoporte",
-      "publisher": "CN=00000000-0000-0000-0000-000000000000",
-      "publisherDisplayName": "QuickSpace",
-      "displayName": "QuickSpace Soporte",
+      "identityName": "QuickSpace.QuickSpaceSoporte",
+      "publisher": "CN=DA30E72C-F614-4132-9283-9F3D86DF8FC2",
+      "publisherDisplayName": "Quick Space",
+      "displayName": "Quick Space Soporte",
       "backgroundColor": "#14243C",
       "languages": [
         "es-ES"
       ],
-      "artifactName": "QuickSpace-Soporte.appx"
+      "artifactName": "QuickSpace-Soporte.appx",
+      "minVersion": "10.0.17763.0",
+      "maxVersionTested": "10.0.26100.0"
     }
   },
   "dependencies": {
