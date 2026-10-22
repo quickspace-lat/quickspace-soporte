@@ -6,11 +6,11 @@ Remote support client used by Quick Space technicians to assist their customers.
 
 ## Download
 
-Latest version: **[QuickSpace-Soporte.exe](https://github.com/quickspace-lat/quickspace-soporte/releases/latest/download/QuickSpace-Soporte.exe)** (Windows 10/11, portable, no installation). All releases: [Releases](https://github.com/quickspace-lat/quickspace-soporte/releases).
+**Recommended:** install from the Microsoft Store: **[Quick Space Soporte](https://apps.microsoft.com/detail/9NMGL93F8PNN)** (Windows 10/11).
 
-This program uses free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+Portable alternative (no installation, unsigned; some antivirus products may block it): [QuickSpace-Soporte.exe](https://github.com/quickspace-lat/quickspace-soporte/releases/latest/download/QuickSpace-Soporte.exe).
 
-*Descarga la última versión desde el enlace de arriba. No requiere instalación.*
+*Recomendado: instala la app desde la Microsoft Store con el enlace de arriba.*
 
 ## How it works
 
@@ -27,15 +27,6 @@ npm run dist          # dist/QuickSpace-Soporte.exe (portable)
 ```
 
 Releases are built and signed by GitHub Actions (`.github/workflows/build.yml`) when a `v*` tag is pushed.
-
-## Code signing policy
-
-Free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
-
-- Committers and reviewers: [Members of this repository](../../graphs/contributors)
-- Approvers: repository owner
-
-Only binaries built by the GitHub Actions workflow of this repository from its public source code are signed. Every signing request is manually approved.
 
 ## Privacy
 

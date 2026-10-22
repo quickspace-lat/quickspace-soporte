@@ -89,4 +89,4 @@ jobs:
           body: |
             QuickSpace Soporte for Windows 10/11 (portable, no installation). The user must accept every remote session.
 
-            Free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+            Recommended: install from the Microsoft Store: https://apps.microsoft.com/detail/9NMGL93F8PNN
