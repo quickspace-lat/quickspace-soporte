@@ -1,6 +1,6 @@
 {
   "name": "quickremote-agent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Soporte remoto de Quick Space",
   "author": "Quick Space",
@@ -49,7 +49,7 @@
     "@nut-tree-fork/nut-js": "^4.2.6"
   },
   "devDependencies": {
-    "electron": "^44.7.0",
+    "electron": "^44.9.3",
     "electron-builder": "^26.15.3"
   }
 }
